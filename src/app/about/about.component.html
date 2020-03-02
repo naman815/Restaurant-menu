@@ -67,7 +67,7 @@
     </mat-card>
   </div>
 
-  <div fxFlex>
+  <div fxFlex *ngIf="leader">
     <h2>Corporate Leadership</h2>
 
     <div *ngFor="let l of leader">
@@ -87,5 +87,11 @@
         </div>
       </mat-card>
     </div>
+  </div>
+  <div fxFlex [hidden]="leader">
+    <mat-spinner> </mat-spinner>
+    <h4>
+      Loading . . . . Please Wait
+    </h4>
   </div>
 </div>
