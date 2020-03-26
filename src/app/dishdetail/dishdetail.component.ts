@@ -14,6 +14,7 @@ import { switchMap } from "rxjs/operators";
 })
 export class DishdetailComponent implements OnInit {
   dish: Dish;
+  errMess: string;
   dishIds: string[];
   prev: string;
   next: string;
@@ -92,10 +93,13 @@ export class DishdetailComponent implements OnInit {
         switchMap((params: Params) => this.dishservice.getDish(params["id"]))
       )
 
-      .subscribe(dishes => {
-        this.dish = dishes;
-        this.setPrevNext(dishes.id);
-      });
+      .subscribe(
+        dishes => {
+          this.dish = dishes;
+          this.setPrevNext(dishes.id);
+        },
+        errmess => (this.errMess = <any>errmess)
+      );
   }
   goBack(): void {
     this.location.back();
