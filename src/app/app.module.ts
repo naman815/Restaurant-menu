@@ -36,9 +36,10 @@ import { LeaderService } from "./services/leader.service";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { LoginComponent } from "./login/login.component";
 import { ProcessHTTPMsgService } from "./services/process-httpmsg.service";
+import { FeedbackService } from "./services/feedback.service";
 
 import { baseURL } from "./shared/baseURL";
-import { HighlightDirective } from './directives/highlight.directive';
+import { HighlightDirective } from "./directives/highlight.directive";
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { HighlightDirective } from './directives/highlight.directive';
     DishService,
     PromotionService,
     LeaderService,
+    FeedbackService,
     ProcessHTTPMsgService,
     { provide: "BaseURL", useValue: baseURL }
   ],

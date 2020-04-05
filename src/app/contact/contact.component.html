@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div fxFlex fxFlexOffset="20px" class="form-size" [hidden]="flag">
     <h3>Send us your feedback</h3>
     <form
       novalidate
@@ -127,9 +127,28 @@
         mat-button
         class="background-primary text-floral-white"
         [disabled]="feedbackForm.invalid"
+        style="background-color: rgb(105, 79, 184); color: white;"
       >
         Submit
       </button>
     </form>
+  </div>
+  <div fxFlex *ngIf="spin || errMess">
+    <mat-spinner></mat-spinner>
+    <h4>Loading . . . Please Wait</h4>
+  </div>
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{ errMess }}</h4>
+  </div>
+  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="flag1" [@expand]>
+    <h3>Your Submission</h3>
+    <p>First Name : {{ feedbackCopy.firstname }}</p>
+    <p>Last Name : {{ feedbackCopy.lastname }}</p>
+    <p>Tel. Number : {{ feedbackCopy.telnum }}</p>
+    <p>Email : {{ feedbackCopy.email }}</p>
+    <p>Contact You? : {{ feedbackCopy.agree }}</p>
+    <p>How? : {{ feedbackCopy.contacttype }}</p>
+    <p>Feedback : {{ feedbackCopy.message }}</p>
   </div>
 </div>
